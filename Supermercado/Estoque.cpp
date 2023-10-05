@@ -2,18 +2,25 @@
 
 using namespace std;
 
-void Estoque::adicionarProduto(const Produto& produto, int quantidade) {
+void Estoque::adicionarProduto(const Produto &produto, int quantidade)
+{
     produtos.push_back(produto);
     quantidades.push_back(quantidade);
 }
 
-void Estoque::removerProduto(int codigo, int quantidade) {
-    for (size_t i = 0; i < produtos.size(); i++) {
-        if (produtos[i].getCodigo() == codigo) {
-            if (quantidade >= quantidades[i]) {
+void Estoque::removerProduto(Produto &p, int quantidade)
+{
+    for (size_t i = 0; i < produtos.size(); i++)
+    {
+        if (produtos[i].getCodigo() == p.getCodigo())
+        {
+            if (quantidade >= quantidades[i])
+            {
                 produtos.erase(produtos.begin() + i);
                 quantidades.erase(quantidades.begin() + i);
-            } else {
+            }
+            else
+            {
                 quantidades[i] -= quantidade;
             }
             break;
@@ -21,9 +28,12 @@ void Estoque::removerProduto(int codigo, int quantidade) {
     }
 }
 
-int Estoque::getQuantidade(int codigo) const {
-    for (size_t i = 0; i < produtos.size(); i++) {
-        if (produtos[i].getCodigo() == codigo) {
+int Estoque::getQuantidade(int codigo) const
+{
+    for (size_t i = 0; i < produtos.size(); i++)
+    {
+        if (produtos[i].getCodigo() == codigo)
+        {
             return quantidades[i];
         }
     }
