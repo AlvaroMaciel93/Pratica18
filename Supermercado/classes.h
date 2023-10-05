@@ -10,39 +10,45 @@
 
 using namespace std;
 
-class Produto {
-    private:
-        string nome;
-        double preco;
-        int codigo;
-    public:
-        Produto(string nome, double preco, int codigo);
-        string getNome() const;
-        double getPreco() const;
-        int getCodigo() const;
+class Produto
+{
+private:
+    string nome;
+    double preco;
+    int codigo;
+
+public:
+    Produto(string nome, double preco, int codigo);
+    string getNome() const;
+    double getPreco() const;
+    int getCodigo() const;
 };
 
-class Estoque {
-    public:
-        void adicionarProduto(const Produto& produto, int quantidade);
-        void removerProduto(int codigo, int quantidade);
-        int getQuantidade(int codigo) const;
+class Estoque
+{
+public:
+    void adicionarProduto(const Produto &produto, int quantidade);
+    void removerProduto(Produto &p, int quantidade);
+    int getQuantidade(int codigo) const;
 
-    private:
-        vector<Produto> produtos;
-        vector<int> quantidades;
+private:
+    vector<Produto> produtos;
+    vector<int> quantidades;
 };
 
-class CarrinhoDeCompras {
-    public:
-        void adicionarProduto(const Produto& produto, int quantidade);
-        void removerProduto(int codigo, int quantidade);
-        double calcularValorTotal() const;
-        void exibirConteudo() const;
+class CarrinhoDeCompras
+{
+public:
+    void adicionarProduto(const Produto &p, int quantidade);
+    void removerProduto(Produto &p, int quantidade);
+    int getQuantidadeProduto(Produto &p) const;
+    void esvaziarCarrinho();
+    double calcularValorTotal() const;
+    void exibirConteudo() const;
 
-    private:
-        vector<Produto> produtos;
-        vector<int> quantidades;
+private:
+    vector<Produto> produtos;
+    vector<int> quantidades;
 };
 
 #endif
